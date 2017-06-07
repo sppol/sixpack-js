@@ -124,7 +124,7 @@
                 return callback(null, res);
             });
         },
-        convert: function(experiment_name, kpi, callback) {
+        convert: function(experiment_name, kpi, price, callback) {
             if (typeof kpi === 'function') {
                 callback = kpi;
                 kpi = null;
@@ -152,6 +152,9 @@
             }
             if (kpi) {
                 params.kpi = kpi;
+            }
+            if (price) {
+                params.price = price;
             }
             return _request(this.base_url + "/convert", params, this.timeout, function(err, res) {
                 if (err) {
